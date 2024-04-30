@@ -1,6 +1,9 @@
 function MinistryDashboard() {
   return (
-    <div>MinistryPage</div>
+    <div>
+      <a href="logout">Logout</a>
+      MinistryPage
+    </div>
   )
 }
 

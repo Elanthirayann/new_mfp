@@ -3,7 +3,14 @@ import { Hono } from 'hono'
 import pages from './pages/routes'
 import { logger } from 'hono/logger'
 
-const app = new Hono()
+type Variables = {
+  user: {
+    username: string
+    role: string
+  }
+}
+
+const app = new Hono<{Variables: Variables}>()
 app.use(logger())
 
 app.route('/', pages)
