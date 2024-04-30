@@ -1,6 +1,9 @@
 function MFPAdminPage() {
   return (
-    <div>MFPAdminPage</div>
+    <div>
+      <h1>MFP Admin</h1>
+      <a href="/view/foodparks">View Food Parks</a>
+    </div>
   )
 }
 

@@ -9,14 +9,17 @@ import { state } from './state';
 export const megaFoodPark = mysqlTable('MegaFoodPark', {
   id: int("megaFoodParkId").autoincrement().primaryKey(),
   name: text("name").notNull(),
-  districtId: text("districtId").references(() => district.id),
-  stateId: text("stateId").references(() => state.id),
+  toalLandArea: int("totalLandArea").notNull(),
+  totalLeasableArea: int("totalLeasableArea").notNull(),
+  totalVacantArea: int("totalVacantArea").notNull(),
+  districtId: int("districtId").references(() => district.id),
+  stateId: int("stateId").references(() => state.id),
 })
 
 export const foodParkRelations = relations(megaFoodPark, ({ one, many }) => ({
   ministry: one(ministry),
-  state: one(state),
-  district: one(district),
+  state: one(state, {fields: [megaFoodPark.stateId], references: [state.id]}),
+  district: one(district, {fields: [megaFoodPark.districtId], references: [district.id]}),
   units: many(manufacturingUnit),
   workers: many(worker),
 }))

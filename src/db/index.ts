@@ -30,4 +30,5 @@ export const connection = await mysql.createConnection({
   database: process.env.DB_NAME,
   multipleStatements: true,
 });
+
 export const db = drizzle(connection, { schema, mode: "default" });

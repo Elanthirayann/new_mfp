@@ -10,6 +10,6 @@ export const district = mysqlTable('District', {
 })
 
 export const districtRelations = relations(district, ({ one, many }) => ({
-  state: one(state),
-  foodParks: many(megaFoodPark),
+  state: one(state, { fields: [district.stateId], references: [state.id] }),
+  foodParks: many(megaFoodPark)
 }))
